@@ -1,70 +1,71 @@
-# SIR-Covid19 模型模擬與比較
+#  SIR-Covid19 Model Simulation and Comparison
 
-本專案透過 **SIR 傳染病模型**，模擬並比較 COVID-19 疫情在全球初期的擴散情形，使用真實資料來驗證模型表現。
-
----
-
-##  資料集介紹
-
-本專案所使用的資料來源為 Kaggle 上的公開 COVID-19 疫情資料集，涵蓋了全球 **187 個國家地區**，記錄時間範圍為 **2020 年 1 月 22 日至 2020 年 7 月 22 日**。
-
-| 欄位名稱         | 說明                              |
-|------------------|-----------------------------------|
-| `Country/Region` | 國家或地區名稱                    |
-| `New cases`      | 每日新增確診人數                  |
-| `New deaths`     | 每日新增死亡人數                  |
-| `New recovered`  | 每日新增康復人數                  |
-
+This project simulates and compares the early global spread of COVID-19 using the **SIR (Susceptible-Infectious-Recovered) epidemiological model**, with real-world data to verify model performance.
 
 ---
 
-## 目的
+##  Dataset Description
 
-主要目標如下：
+The dataset used comes from a public COVID-19 dataset on Kaggle, covering **187 countries and regions** from **January 22, 2020 to July 22, 2020**.
 
-- 使用 **SIR 模型** 來模擬 COVID-19 的傳播過程  
-- 探討並比較兩種不同的 **模型初始條件設定方法**
-- 評估模型對於早期疫情擴散的擬合效果
+| Column Name      | Description                         |
+|------------------|-------------------------------------|
+| `Country/Region` | Name of the country or region       |
+| `New cases`      | Daily confirmed new cases           |
+| `New deaths`     | Daily new deaths                    |
+| `New recovered`  | Daily new recoveries                |
+
+
 
 ---
 
-##  模型方法與設定
+##   Goals
 
-使用兩種方式來設定模型初始條件：
+The main goals of this project are:
 
-### 方法一：根據資料推估初始值
+- Apply the **SIR model** to simulate the spread of COVID-19  
+- Explore and compare two different methods for setting initial conditions  
+- Evaluate the model’s performance in approximating the early-stage pandemic spread
 
-使用資料中最早的全球疫情資料（2020-01-24）進行估算：
+---
 
-- 當日全球確診人數：555 人  
-- 假設全球人口約為 78 億人  
-- 計算得：
+##  Model Methods and Setup
+
+This project explores two approaches for initializing the model:
+
+### Method 1: Estimate initial values from data
+
+Using the earliest available global data (2020-01-24):
+
+- Confirmed global cases on that day: 555  
+- Assume the global population is approximately 7.8 billion  
+- Calculated as:
   - `I(0) = 555 / 7.8e9 ≈ 7.12e-8`
   - `S(0) = 1 - I(0) ≈ 0.9999999288`
   - `R(0) = 0`
 
-### 方法二：自訂假設初始值
+### Method 2: Use custom initial assumptions
 
-另一種方法則是假設一組初始條件（例如：初始感染比例、恢復率、基本傳染數 \( R_0 \) 等），進行敏感度分析與模擬比較。
+Alternatively, define a set of initial conditions (e.g., assumed infection ratio, recovery rate, basic reproduction number \( R_0 \)) for comparison and sensitivity analysis.
 
 ---
 
-##  使用工具與函式庫
+##  Tools & Libraries Used
 
-- **Python**（NumPy、Matplotlib、SciPy）
+- **Python** (NumPy, Matplotlib, SciPy)
 - **Jupyter Notebook**
-- **Pandas**：資料清理與分析
-- **ydata-profiling**（原 pandas-profiling）：產出資料統計摘要報告
+- **Pandas** for data cleaning and processing
+- **ydata-profiling** (formerly pandas-profiling) for automated data reports
 
 ---
 
-##  專案結構
+##  Structure
 
 ```bash
 sir-model/
-├── data/               # 原始資料與處理後的 CSV
-├── figures/            # 模擬結果圖表輸出
-├── notebooks/          # Jupyter Notebook 模擬流程
-├── sir_model.py        # 核心模型實作程式
-├── README.md           # 本說明文件
-└── requirements.txt    # 相依套件列表
+├── data/               # Raw and processed CSV files
+├── figures/            # Output plots and graphs
+├── notebooks/          # Jupyter notebooks for simulations
+├── sir_model.py        # Core model implementation
+├── README.md           # This documentation
+└── requirements.txt    # Python dependencies

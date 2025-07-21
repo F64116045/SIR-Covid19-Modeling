@@ -59,13 +59,4 @@ Alternatively, define a set of initial conditions (e.g., assumed infection ratio
 
 ---
 
-##  Structure
 
-```bash
-sir-model/
-├── data/               # Raw and processed CSV files
-├── figures/            # Output plots and graphs
-├── notebooks/          # Jupyter notebooks for simulations
-├── sir_model.py        # Core model implementation
-├── README.md           # This documentation
-└── requirements.txt    # Python dependencies

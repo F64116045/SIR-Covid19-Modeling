@@ -1,9 +1,52 @@
 #  SIR-Covid19 Model Simulation and Comparison
-
+The **SIR model** (Susceptible–Infectious–Recovered) is one of the simplest compartmental models in epidemiology. Despite its simplicity, it captures the essential dynamics of many epidemics, especially when vaccination and reinfection can be neglected.
 This project simulates and compares the early global spread of COVID-19 using the **SIR (Susceptible-Infectious-Recovered) epidemiological model**, with real-world data to verify model performance.
 
 ---
+## Mathematical Background
 
+The SIR model divides the population into three compartments over time:
+
+- $S(t)$: susceptible individuals
+- $I(t)$: infectious individuals
+- $R(t)$: recovered or removed individuals
+
+The total population is assumed to be normalized such that:
+
+$$
+S(t) + I(t) + R(t) = 1
+$$
+
+The system of ordinary differential equations that governs the model is:
+
+$$
+\frac{dS}{dt} = -\beta S I
+$$
+
+$$
+\frac{dI}{dt} = \beta S I - \gamma I
+$$
+
+$$
+\frac{dR}{dt} = \gamma I
+$$
+
+Where:
+- $\beta$ is the **transmission rate**
+- $\gamma$ is the **recovery rate**
+- $R_0 = \frac{\beta}{\gamma}$ is the **basic reproduction number**
+
+### Key Assumptions:
+- Population size is constant (no births/deaths)
+- Individuals mix homogeneously
+- Recovered individuals gain permanent immunity
+- No latent (incubation) period is modeled
+
+The basic reproduction number $R_0$ determines whether the disease will spread:
+- If $R_0 > 1$, an outbreak can occur
+- If $R_0 < 1$, the disease dies out
+
+This mathematical framework provides a foundation for simulating and understanding the early dynamics of pandemics such as COVID-19.
 ##  Dataset Description
 
 The dataset used comes from a public COVID-19 dataset on Kaggle, covering **187 countries and regions** from **January 22, 2020 to July 22, 2020**.
